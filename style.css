@@ -1,0 +1,327 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  color: #e5e7eb;
+  background-color: #020617;
+  position: relative;
+}
+
+/* Background gradient behind everything */
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top left, #22d3ee33, transparent 50%),
+              radial-gradient(circle at bottom right, #6366f133, transparent 50%);
+  z-index: -1;
+}
+
+/* Glass base */
+.glass {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.8);
+  border-radius: 16px;
+}
+
+/* Layout */
+.navbar {
+  position: sticky;
+  top: 0;
+  margin: 12px auto;
+  max-width: 1000px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+nav a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.main {
+  max-width: 1000px;
+  margin: 8px auto 40px;
+  padding: 0 12px 40px;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.panel {
+  padding: 20px 24px;
+}
+
+/* Hero */
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.subtext {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Summary cards */
+.summary-cards {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  padding: 16px;
+  text-align: left;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.metric {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Tasks */
+.panel h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.task-form input,
+.task-form select,
+.task-form button {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.8);
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.task-form input {
+  flex: 1 1 180px;
+}
+
+.task-form select {
+  flex: 0 0 120px;
+}
+
+.task-form button {
+  background: #3b82f6;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.task-form button:hover {
+  filter: brightness(1.1);
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(30, 64, 175, 0.4);
+}
+
+.task-name {
+  font-size: 14px;
+}
+
+.task-meta {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.ghost-btn {
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+  font-size: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.ghost-btn:hover {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+/* Habits */
+.habit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.habit-list label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  padding: 16px 0 24px;
+}
+  
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  nav a {
+    margin-left: 10px;
+    font-size: 13px;
+  }
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-item.completed .task-name {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.controls input, .controls select, #clear-all {
+  border-radius: 10px;
+  border: 1px solid rgba(148,163,184,0.18);
+  background: rgba(15,23,42,0.65);
+  color: #e5e7eb;
+  padding: 8px;
+}
+
+.task-item .edit-input {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(148,163,184,0.18);
+  background: rgba(255,255,255,0.03);
+  color: #e5e7eb;
+}
+
+.controls input[type="date"], .controls select#sort-by, .controls input, .controls select {
+  border-radius: 10px;
+  border: 1px solid rgba(148,163,184,0.18);
+  background: rgba(15,23,42,0.65);
+  color: #e5e7eb;
+  padding: 8px;
+}
+
+/* small style for due date in task row */
+.task-item .task-meta .due-date {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 12px;
+  color: #cbd5e1; /* subtle */
+}
+
+/* ===== FocusFlow incremental fixes (SAFE PATCH) ===== */
+
+/* Task item base – only if missing */
+.task-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Checkbox + name grouping */
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Task metadata */
+.task-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-left: 10px;
+}
+
+/* Completed task visual */
+.task-item.completed .task-name {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Ghost buttons – DO NOT change colors/layout */
+.ghost-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Stats progress bar (only adds if missing) */
+.progress-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 3px;
+}

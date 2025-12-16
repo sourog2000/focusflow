@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow – Study & Habit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-gradient"></div>
+
+    <header class="navbar glass">
+      <div class="logo">FocusFlow</div>
+      <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#tasks"><i class="fa-solid fa-list"></i>Tasks</a>
+        <a href="#habits">Habits</a>
+        <a href="#stats">Stats</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section id="dashboard" class="section">
+        <div class="glass panel hero">
+          <div>
+            <h1>Welcome, Souro 👋</h1>
+            <p id="today-date" class="subtext"></p>
+          </div>
+        </div>
+
+        <div class="summary-cards">
+          <div class="glass card">
+            <h3>Total Tasks</h3>
+            <p class="metric" id="total-tasks">5</p>
+          </div>
+          <div class="glass card">
+            <h3>Completed Tasks</h3>
+            <p class="metric" id="completed-tasks">3</p>
+          </div>
+          <div class="glass card">
+            <h3>Habits Done Today</h3>
+            <p class="metric" id="habits-done">2</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tasks" class="section">
+        <div class="glass panel">
+          <h2>Tasks</h2>
+
+          <!-- Controls: Search + Filters + Sort + Clear -->
+          <div
+            class="controls"
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-bottom: 12px;
+            "
+          >
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search tasks by name..."
+              style="
+                flex: 1 1 220px;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+                background: rgba(15, 23, 42, 0.6);
+                color: #e5e7eb;
+              "
+            />
+
+            <select
+              id="filter-category"
+              style="
+                padding: 8px;
+                border-radius: 8px;
+                background: rgba(15, 23, 42, 0.6);
+                color: #e5e7eb;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+              "
+            >
+              <option value="All">All categories</option>
+              <option value="Study">Study</option>
+              <option value="Health">Health</option>
+              <option value="Personal">Personal</option>
+            </select>
+
+            <select
+              id="filter-priority"
+              style="
+                padding: 8px;
+                border-radius: 8px;
+                background: rgba(15, 23, 42, 0.6);
+                color: #e5e7eb;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+              "
+            >
+              <option value="All">All priorities</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+
+            <!-- Sort control (new) -->
+            <select
+              id="sort-by"
+              style="
+                padding: 8px;
+                border-radius: 8px;
+                background: rgba(15, 23, 42, 0.6);
+                color: #e5e7eb;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+              "
+            >
+              <option value="none">Sort: None</option>
+              <option value="due-earliest">Due date: Earliest first</option>
+              <option value="due-latest">Due date: Latest first</option>
+            </select>
+
+            <button
+              id="clear-all"
+              type="button"
+              style="
+                padding: 8px 12px;
+                border-radius: 8px;
+                background: transparent;
+                border: 1px solid rgba(148, 163, 184, 0.3);
+                cursor: pointer;
+              "
+            >
+              Clear all
+            </button>
+          </div>
+
+          <!-- Add/Edit task form (added due date input) -->
+          <form id="task-form" class="task-form">
+            <input
+              type="text"
+              id="task-name"
+              placeholder="Task name (e.g. DSA practice)"
+              required
+            />
+            <select id="task-category">
+              <option value="Study">Study</option>
+              <option value="Health">Health</option>
+              <option value="Personal">Personal</option>
+            </select>
+            <select id="task-priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+
+            <!-- new due date -->
+            <input
+              type="date"
+              id="task-duedate"
+              style="
+                padding: 8px;
+                border-radius: 8px;
+                background: rgba(15, 23, 42, 0.6);
+                color: #e5e7eb;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+              "
+            />
+
+            <button type="submit">Add Task</button>
+          </form>
+
+          <ul id="task-list" class="task-list"></ul>
+        </div>
+      </section>
+
+      <section id="habits" class="section">
+        <div class="glass panel">
+          <h2>Habits</h2>
+          <ul class="habit-list">
+            <li>
+              <label><input type="checkbox" /> Read 20 pages</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> Walk 30 minutes</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> DSA practice</label>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="stats" class="section">
+        <div class="glass panel">
+          <h2>Stats</h2>
+
+          <div style="margin-bottom: 12px">
+            <p>
+              Completion Rate:
+              <strong><span id="completion-percent">0</span>%</strong>
+            </p>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="progress-track">
+            <div class="progress-fill" id="completion-bar"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made by Souro ✨</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
